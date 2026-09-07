@@ -82,6 +82,3 @@
 
 ---
 
-## 📄 Лицензия
-
-MIT License © [Eniggman](https://github.com/Eniggman)
