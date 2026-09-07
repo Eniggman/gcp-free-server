@@ -32,7 +32,7 @@
 ### Шаг 1. Подготовка аккаунта Google Cloud
 1. Откройте [Google Cloud Console](https://console.cloud.google.com/).
 2. Создайте новый изолированный проект (например, `ai-server`) без привязки к организациям (`No organization`).
-3. Привяжите Billing Account (при первой регистрации начисляется $300 пробных средств, либо используются ежемесячные ваучеры $10 от подписки Google AI Pro).
+3. Привяжите Billing Account (при первой регистрации начисляется $300 пробных средств, либо используются ежемесячные ваучеры $10 от подписки Google AI Pro — саму подписку за ~1$ можно приобрести через Telegram-бота [@ShopAethelBot](https://t.me/ShopAethelBot?start=ref_8251436466)).
 
 ### Шаг 2. Создание инстанса ВМ (Always Free Tier)
 Перейдите в **Compute Engine ➡️ VM instances ➡️ Create instance**:
