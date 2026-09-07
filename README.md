@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 > 🤖 **ВАЖНО: Проще всего делать с AI-агентом!**  
-> Самый быстрый способ развернуть этот сервер — **не читать весь огромный мануал вручную, а передать файл [`JOURNEY_AND_ARCHITECTURE_GUIDE.md`](./JOURNEY_AND_ARCHITECTURE_GUIDE.md) (или [`SKILL.md`](./SKILL.md)) вашему AI-агенту** (Google Antigravity, Cursor, Windsurf, Claude Dev).  
+> Самый быстрый способ развернуть этот сервер — **не читать весь огромный мануал вручную, а передать файл [`JOURNEY_AND_ARCHITECTURE_GUIDE.md`](./JOURNEY_AND_ARCHITECTURE_GUIDE.md) (или [`SKILL.md`](./SKILL.md)) вашему AI-агенту**
 > Агент шаг за шагом проведет вас по процессу, перепроверит параметры в консоли GCP во избежание платных опций и сам выполнит команды настройки Linux. Это намного проще, быстрее и безопаснее, чем делать всё вслепую!
 
 ---
