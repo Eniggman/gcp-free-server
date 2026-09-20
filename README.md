@@ -1,3 +1,5 @@
+> **Версия:** 1.0 • **Последнее обновление:** 2026-09-20
+
 # 🚀 Бесплатный 24/7 сервер в Google Cloud ($0/мес)
 
 [![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com/)
