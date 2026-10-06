@@ -84,3 +84,6 @@ v1.0 [20.09.26]
 
 ---
 
+## English summary
+
+A step-by-step guide to running a 24/7 Linux server on Google Cloud Compute Engine for $0 out of pocket, using the Always Free Tier e2-micro VM in us-central1 and the monthly $10 Google Cloud credit that comes with a Google AI Pro subscription. It compares deployment options and their costs, then covers Ubuntu 24.04 setup, a 4 GB SSD swap file, fail2ban and the Cockpit web dashboard accessed through an SSH tunnel; useful for hosting AI CLI agents, Telegram bots and background scripts. The repo ships an AI agent skill (SKILL.md): give SKILL.md or JOURNEY_AND_ARCHITECTURE_GUIDE.md to your AI agent and it will walk you through the setup.
