@@ -8,7 +8,7 @@ v1.0 [20.09.26]
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 > 🤖 **ВАЖНО: Проще всего делать с AI-агентом!**  
-> Самый быстрый способ развернуть этот сервер — **не читать весь огромный мануал вручную, а передать файл [`JOURNEY_AND_ARCHITECTURE_GUIDE.md`](./JOURNEY_AND_ARCHITECTURE_GUIDE.md) (или [`SKILL.md`](./SKILL.md)) вашему AI-агенту**
+> Самый быстрый способ развернуть этот сервер — **передать файл [`SKILL.md`](./SKILL.md) вашему AI-агенту**.
 > Агент шаг за шагом проведет вас по процессу, перепроверит параметры в консоли GCP во избежание платных опций и сам выполнит команды настройки Linux. Это намного проще, быстрее и безопаснее, чем делать всё вслепую!
 
 ---
@@ -19,12 +19,13 @@ v1.0 [20.09.26]
 
 Идеально для запуска AI CLI-агентов, телеграм-ботов, фоновых скриптов и удаленного управления через веб-дашборд.
 
-* **Философия бюджета:** $0.00 личных средств. Расходы на 100% покрываются программой Always Free и ежемесячными купонами $10 от подписки Google AI Pro[developers.google.com/program/my-benefits].  
+* **Философия бюджета:** $0.00 личных средств. Расходы на 100% покрываются программой Always Free и ежемесячными купонами $10 от Google Developer Program или подписки Google AI Pro.  
+* *Получение ежемесячных $10 кредитов на Google Cloud: [Google Developer Program бенефиты](https://developers.google.com/program/my-benefits).*  
 * *Подписку Google AI Pro (за ~1$) можно приобрести через Telegram-бота: [@ShopAethelBot](https://t.me/ShopAethelBot?start=ref_8251436466).*
 
 ---
 
-## 📊 Сравнительная матрица вариантов развертывания (Глава 9)
+## 📊 Сравнительная матрица вариантов развертывания
 
 | Параметр | 🥉 Вариант 1: «Абсолютный ноль» | 🥇 Вариант 2: «Баланс и Скорость» (**Наш выбор!**) | 🥈 Вариант 3: «Spot-эксперимент» |
 | :--- | :--- | :--- | :--- |
@@ -46,7 +47,7 @@ v1.0 [20.09.26]
 
 ## ⚡ Краткий алгоритм запуска
 
-1. **Создать проект GCP:** Привязать Billing Account (пробные $300 или купон $10 от Google AI Pro).
+1. **Создать проект GCP:** Привязать Billing Account (пробные $300 или купон $10 от Google Developer Program / Google AI Pro).
 2. **Создать ВМ `e2-micro`:**
    - Регион: `us-central1`, `us-west1` или `us-east1`.
    - Режим: **Standard** (НЕ Spot!).
@@ -76,14 +77,6 @@ v1.0 [20.09.26]
 
 ---
 
-## 📖 Полная летопись проекта
-
-Детальный разбор всех 12 глав, математика калькулятора GCP, решение ошибок и советы архитектора:
-
-👉 **[JOURNEY_AND_ARCHITECTURE_GUIDE.md](./JOURNEY_AND_ARCHITECTURE_GUIDE.md)**
-
----
-
 ## English summary
 
-A step-by-step guide to running a 24/7 Linux server on Google Cloud Compute Engine for $0 out of pocket, using the Always Free Tier e2-micro VM in us-central1 and the monthly $10 Google Cloud credit that comes with a Google AI Pro subscription. It compares deployment options and their costs, then covers Ubuntu 24.04 setup, a 4 GB SSD swap file, fail2ban and the Cockpit web dashboard accessed through an SSH tunnel; useful for hosting AI CLI agents, Telegram bots and background scripts. The repo ships an AI agent skill (SKILL.md): give SKILL.md or JOURNEY_AND_ARCHITECTURE_GUIDE.md to your AI agent and it will walk you through the setup.
+A step-by-step guide to running a 24/7 Linux server on Google Cloud Compute Engine for $0 out of pocket, using the Always Free Tier e2-micro VM in us-central1 and the monthly $10 Google Cloud credit that comes with the [Google Developer Program](https://developers.google.com/program/my-benefits) or a Google AI Pro subscription. It compares deployment options and their costs, then covers Ubuntu 24.04 setup, a 4 GB SSD swap file, fail2ban and the Cockpit web dashboard accessed through an SSH tunnel; useful for hosting AI CLI agents, Telegram bots and background scripts. The repo ships an AI agent skill (SKILL.md): give SKILL.md to your AI agent and it will walk you through the setup.

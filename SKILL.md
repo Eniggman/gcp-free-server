@@ -1,19 +1,19 @@
 ---
 name: gcp-free-server
-description: "Guide a user step by step through creating a 24/7 Linux server on Google Cloud Compute Engine with $0 out of pocket: an Always Free e2-micro (Standard, not Spot) in us-central1/us-west1/us-east1 with Ubuntu 24.04, where the remaining ~$3.65–6.65/month (external IPv4 + optional 30 GB Balanced SSD) is covered by the $10/month Google Cloud credit from a Google AI Pro subscription; then extend RAM to ~5 GB with a 4 GB SSD swap, install fail2ban and the Cockpit web panel over an SSH tunnel. Use when the user wants a free/cheap always-on cloud server for AI agents, Telegram bots or scripts. Triggers: «бесплатный сервер Google Cloud», «GCP Always Free», «e2-micro», «сервер за $0», «поднять сервер в гугле», «сервер для ИИ-агентов 24/7», «купон Google AI Pro на GCP», «swap на сервере», «Cockpit»."
+description: "Guide a user step by step through creating a 24/7 Linux server on Google Cloud Compute Engine with $0 out of pocket: an Always Free e2-micro (Standard, not Spot) in us-central1/us-west1/us-east1 with Ubuntu 24.04, where the remaining ~$3.65–6.65/month (external IPv4 + optional 30 GB Balanced SSD) is covered by the $10/month Google Cloud credit from Google Developer Program or a Google AI Pro subscription; then extend RAM to ~5 GB with a 4 GB SSD swap, install fail2ban and the Cockpit web panel over an SSH tunnel. Use when the user wants a free/cheap always-on cloud server for AI agents, Telegram bots or scripts. Triggers: «бесплатный сервер Google Cloud», «GCP Always Free», «e2-micro», «сервер за $0», «поднять сервер в гугле», «сервер для ИИ-агентов 24/7», «купон Google AI Pro на GCP», «Google Developer Program $10», «swap на сервере», «Cockpit»."
 ---
 
 # Сервер 24/7 в Google Cloud за $0 из своего кармана
 
-Инструкция для ИИ-агента. Для людей: [README](https://github.com/Eniggman/gcp-free-server#readme). Полная летопись в 12 главах: [`JOURNEY_AND_ARCHITECTURE_GUIDE.md`](https://github.com/Eniggman/gcp-free-server/blob/main/JOURNEY_AND_ARCHITECTURE_GUIDE.md). Отправляй к нужной главе, если человек хочет подробностей.
+Инструкция для ИИ-агента. Для людей: [README](https://github.com/Eniggman/gcp-free-server#readme).
 
 ## Как устроена экономика (говори человеку именно так)
 
 Сервер **не полностью бесплатный**. Он стоит **$0 из своего кармана**, потому что расходы покрывает кредит:
 - Процессор и RAM `e2-micro` (Standard): **$0** по программе Always Free.
 - Внешний IPv4 (Ephemeral): **~$3.65/мес** ($0.005/ч). Этот платёж обязателен.
-- Диск: 30 GB `pd-standard` (HDD) — $0 по Always Free, **или** 30 GB `pd-balanced` (SSD, рекомендован гайдом из-за быстрого swap) — **$3.00/мес**.
-- Итого **~$3.65/мес (HDD) или ~$6.65/мес (SSD)**. Это покрывает ежемесячный промо-кредит **$10** в Google Cloud от подписки **Google AI Pro**. Неистраченный остаток копится до срока годности купонов (по гайду 12–18 месяцев).
+- Диск: 30 GB `pd-standard` (HDD) — $0 по Always Free, **или** 30 GB `pd-balanced` (SSD, рекомендован из-за быстрого swap) — **$3.00/мес**.
+- Итого **~$3.65/мес (HDD) или ~$6.65/мес (SSD)**. Это покрывает ежемесячный промо-кредит **$10** в Google Cloud от [Google Developer Program](https://developers.google.com/program/my-benefits) или подписки **Google AI Pro**. Неистраченный остаток копится до срока годности купонов (до 12–18 месяцев).
 - Без подписки AI Pro (или без активированного купона) эти суммы списываются с привязанной карты. **Обязательно скажи это человеку.**
 
 ## Точки подтверждения (без явного «да» человека не делать)
@@ -29,10 +29,10 @@ description: "Guide a user step by step through creating a 24/7 Linux server on 
 ## Шаг 1. Проект и биллинг (консоль GCP, делает человек)
 
 - Отдельный проект (например, `AI server`), Organization: `No organization`.
-- Привязать Billing Account. Если на старом аккаунте висит долг, гайд советует написать в Billing Support (глава 2.2), а не заводить аккаунты-дубликаты.
-- Проверить в Billing → Credits, что купон AI Pro на $10 активен.
+- Привязать Billing Account. Если на старом аккаунте висит долг, рекомендуется написать в Billing Support, а не заводить аккаунты-дубликаты.
+- Проверить в Billing → Credits, что купон на $10 (Google Developer Program или Google AI Pro) активен.
 
-## Шаг 2. Создание ВМ: чек-лист перед «Create» (глава 12)
+## Шаг 2. Создание ВМ: чек-лист перед «Create»
 
 - Region/Zone: `us-central1` (например, `us-central1-b`), `us-west1` или `us-east1`. В других регионах Always Free не действует.
 - Machine: серия E2, **`e2-micro`** (2 vCPU shared-core, 1 GB).
@@ -45,7 +45,7 @@ description: "Guide a user step by step through creating a 24/7 Linux server on 
 - Firewall: `Allow HTTP traffic` и `Allow HTTPS traffic` (SSH 22 и так открыт правилом `default-allow-ssh`).
 - External IPv4: **Ephemeral** (у Static при остановленной ВМ тариф ~$7.30/мес за простой).
 
-Гайд не называет лимит бесплатного исходящего трафика. Предупреди, что egress сверх бесплатной квоты Google тарифицируется отдельно, а актуальный лимит человек смотрит на странице Free Tier.
+Предупреди, что egress сверх бесплатной квоты Google тарифицируется отдельно, а актуальный лимит человек смотрит на странице Free Tier.
 
 ## Шаг 3. Подключение
 
@@ -56,7 +56,7 @@ gcloud compute ssh <имя_ВМ> --zone=<зона>            # например
 ```
 `gcloud` сам находит текущий адрес ВМ, поэтому смена Ephemeral IP после перезапуска не мешает. Если `gcloud` не установлен, человек может открыть SSH из консоли (кнопка SSH у ВМ).
 
-## Шаг 4. Swap 4 ГБ + тюнинг ядра (rerun-safe скрипт из главы 8.2)
+## Шаг 4. Swap 4 ГБ + тюнинг ядра (rerun-safe скрипт)
 
 Выполнять на сервере после подтверждения человека. Скрипт безопасен для повторного запуска.
 ```bash
@@ -104,7 +104,7 @@ sudo systemctl enable --now fail2ban cockpit.socket
   gcloud compute ssh <имя_ВМ> --zone=<зона> -- -N -L 9090:localhost:9090
   ```
   Затем открыть `https://localhost:9090`.
-- Для входа в Cockpit нужен пользователь Linux с паролем и sudo (в гайде это отдельный пользователь `aiserver`, глава 11.1.2). Пароль задаёт сам человек, в чат его не пересылать.
+- Для входа в Cockpit нужен пользователь Linux с паролем и sudo (например, отдельный пользователь `aiserver`). Пароль задаёт сам человек, в чат его не пересылать.
 
 ## Шаг 6. Проверка
 
@@ -129,4 +129,4 @@ systemctl is-active fail2ban cockpit.socket  # active / active
 | Дубликаты `/swapfile` в `/etc/fstab` | Раньше запускали «простую» версию команды: удалить лишние строки (после подтверждения), дальше использовать скрипт шага 4 |
 | `gcloud compute ssh` не подключается | Неверная зона или проект (`gcloud compute instances list`), ВМ остановлена, нет правила `default-allow-ssh` |
 | `https://localhost:9090` не открывается | Туннель не запущен или `cockpit.socket` не активен. Браузер предупредит о самоподписанном сертификате — это ожидаемо |
-| Нужно больше мощности | Глава 5.3: Stop → Edit → Machine type → Save → Start. Данные не теряются, но **всё крупнее e2-micro платно** — только с согласия человека |
+| Нужно больше мощности | Stop → Edit → Machine type → Save → Start. Данные не теряются, но **всё крупнее e2-micro платно** — только с согласия человека |
